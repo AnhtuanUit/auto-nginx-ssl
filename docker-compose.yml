@@ -47,13 +47,13 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /root/node_project/views/
+      device: /root/auto-nginx-ssl/views/
       o: bind
   dhparam:
     driver: local
     driver_opts:
       type: none
-      device: /root/node_project/dhparam/
+      device: /root/auto-nginx-ssl/dhparam/
       o: bind
 networks:
   app-network:
