@@ -56,5 +56,6 @@ volumes:
       device: /root/auto-nginx-ssl/dhparam/
       o: bind
 networks:
-  app-network:
-    driver: bridge
+  network1:
+    name: stack-name_node-network 
+    external: true
