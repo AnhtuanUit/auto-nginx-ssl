@@ -24,6 +24,8 @@ services:
       - dhparam:/etc/ssl/certs
     depends_on:
       - nodejs
+    networks:
+      - network1  
 
   certbot:
     image: certbot/certbot
