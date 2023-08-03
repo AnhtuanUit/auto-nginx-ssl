@@ -8,7 +8,8 @@ services:
     image: nodejs
     container_name: nodejs
     restart: unless-stopped
-
+    network:
+      - network-nginx
   webserver:
     image: nginx:mainline-alpine
     container_name: webserver
@@ -24,7 +25,8 @@ services:
       - dhparam:/etc/ssl/certs
     depends_on:
       - nodejs
-
+    network:
+      - network-nginx
   certbot:
     image: certbot/certbot
     container_name: certbot
@@ -35,7 +37,8 @@ services:
     depends_on:
       - webserver
     command: certonly --webroot --webroot-path=/var/www/html --email anhtuan7194@gmail.com --agree-tos --no-eff-email --force-renewal -d at10346.chickenkiller.com  -d www.at10346.chickenkiller.com 
-
+    network:
+      - network-nginx
 volumes:
   certbot-etc:
   certbot-var:
@@ -51,7 +54,9 @@ volumes:
       type: none
       device: /root/auto-nginx-ssl/dhparam/
       o: bind
+  network:
+    - network-nginx
 networks:
-  network1:
-    name: stack-name_node-network 
-    external: true
+  network-nginx:
+    driver: overlay
+    attachable: true
