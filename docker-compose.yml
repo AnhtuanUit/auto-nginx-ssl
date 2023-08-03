@@ -28,7 +28,6 @@ services:
       - nodejs
     networks:
       - app-network
-      - common-network
 
   certbot:
     image: certbot/certbot
@@ -56,8 +55,8 @@ volumes:
       type: none
       device: /root/auto-nginx-ssl/dhparam/
       o: bind
+
 networks:
   app-network:
-    driver: bridge
-  common-network:
     external: true
+    name: node-network
