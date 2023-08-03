@@ -54,8 +54,7 @@ volumes:
       type: none
       device: /root/auto-nginx-ssl/dhparam/
       o: bind
-  networks:
-    - network-nginx
+
 networks:
   network-nginx:
     driver: overlay
