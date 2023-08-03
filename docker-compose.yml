@@ -8,8 +8,6 @@ services:
     image: nodejs
     container_name: nodejs
     restart: unless-stopped
-    networks:
-      - app-network
 
   webserver:
     image: nginx:mainline-alpine
@@ -26,8 +24,6 @@ services:
       - dhparam:/etc/ssl/certs
     depends_on:
       - nodejs
-    networks:
-      - app-network
 
   certbot:
     image: certbot/certbot
